@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript/script.js"></script>
+    <meta charset="utf-8">
+    <title>Friend Finder Survey</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" id="surveytron">
+            <h1 class="text-center">Survey</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <form>
+                    <div id="name-group" class="form-group">
+                        <label>Name (required)</label>
+                        <input type="text" class="form-control" id="name" placeholder="John Smith">
+                        <span id="name-span" aria-hidden="true"></span>
+                    </div>
+                    <div class="photo-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse… <input type="file" id="imgInp">
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <img id='img-upload' />
+                </form>
+            </div>
+        </div>
+
+        <hr id="survery-hr">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="panel-top">Personality Test</div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label>I would rather watch Netflix for 12 straight hours than see the light of day.</label>
+                                <select class="form-control" id="question1">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I would always prefer a coffee or energy drink to water.</label>
+                                <select class="form-control" id="question2">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I spend more time talking to my computer than others.</label>
+                                <select class="form-control" id="question3">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I could spend hours arguing about whether Macs or PCs are better.</label>
+                                <select class="form-control" id="question4">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I love memes related to programmers.</label>
+                                <select class="form-control" id="question5">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I routinely threaten to smash my computer into a million pieces.</label>
+                                <select class="form-control" id="question6">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I spend more time trying to fix broken code than actually coding.</label>
+                                <select class="form-control" id="question7">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I've done extensive research on React Vs Angular</label>
+                                <select class="form-control" id="question8">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>I spend at least 10 hours a day looking at some kind of screen.</label>
+                                <select class="form-control" id="question9">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label>The whole time I filled out this form I thought of ways this idiot could have made it better.</label>
+                                <select class="form-control" id="question10">
+                      <option>1 (strongly disagree)</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5 (strongly agree)</option>
+                    </select>
+                            </div>
+                            <button class="btn" id="submit-button" type="submit" disabled="true">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 class="modal-title text-center">You have a match!</h1>
+                    </div>
+                    <div class="modal-body">
+                        <h1 id="match-name" class="text-center"></h1>
+                        <img src="" alt="" id="match-image" class="img-responsive">
+                        <h4 id="message" class="text-center"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

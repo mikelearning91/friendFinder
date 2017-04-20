@@ -1,0 +1,81 @@
+body {
+    background-color: #f7f6f6;
+}
+
+.jumbotron {
+    color: white;
+    margin-top: 50px;
+    background-color: #94618e;
+}
+
+#survey-btn {
+    color: black;
+    background-color: #f7f6f6;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+#submit-button {
+    background-color: #94618e;
+    color: white;
+    font-size: 16px;
+}
+
+#match-image {
+    height: 200px;
+}
+
+#panel-top {
+    background-color: #94618e;
+    color: white;
+    font-size: 18px;
+}
+
+#instructions {
+    margin-left: 10px;
+    line-height: 10px;
+}
+
+p a {
+    color: #94618e;
+}
+
+p a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#survey-hr {
+    color: black;
+    background-color: black;
+    height: 1px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload {
+    width: 100%;
+}
