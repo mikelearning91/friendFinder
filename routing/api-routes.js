@@ -12,12 +12,14 @@ var connection = mysql.createConnection({
 
 module.exports = function(app) {
 
+
     app.get('/api/friends', function(req, res) {
         connection.query('SELECT * FROM friends', function(err, response) {
             if (err) throw err;
             res.send(response);
         });
     });
+
 
     app.post('/api/friends', function(req, res) {
         var friend = req.body;

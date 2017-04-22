@@ -5,7 +5,7 @@ body {
 .jumbotron {
     color: white;
     margin-top: 50px;
-    background-color: #94618e;
+    background-color: #2594c4;
 }
 
 #survey-btn {
@@ -16,7 +16,7 @@ body {
 }
 
 #submit-button {
-    background-color: #94618e;
+    background-color: #2594c4;
     color: white;
     font-size: 16px;
 }
@@ -26,7 +26,7 @@ body {
 }
 
 #panel-top {
-    background-color: #94618e;
+    background-color: #2594c4;
     color: white;
     font-size: 18px;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 p a {
-    color: #94618e;
+    color: #2594c4;
 }
 
 p a:hover {
@@ -46,9 +46,10 @@ p a:hover {
 }
 
 #survey-hr {
-    color: black;
-    background-color: black;
-    height: 1px;
+    color: #f7f6f6;
+    background-color: #f7f6f6;
+    border: #f7f6f6;
+    height: 0;
 }
 
 .img-responsive {
@@ -77,5 +78,12 @@ p a:hover {
 }
 
 #img-upload {
-    width: 100%;
+    display: none;
+    margin-top: 12px;
+}
+
+@media (min-width: 992px) {
+    .hide-on-895 {
+        display: none;
+    }
 }

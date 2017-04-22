@@ -2,11 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="javascript/script.js"></script>
     <meta charset="utf-8">
     <title>Friend Finder Survey</title>
 </head>
@@ -14,34 +11,39 @@
 <body>
     <div class="container">
         <div class="jumbotron" id="surveytron">
-            <h1 class="text-center">Survey</h1>
+            <h1 class="text-center">Personality Survey</h1>
+            <h2 class="text-center">Find Your Matches</h2>
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-md-3">
                 <form>
                     <div id="name-group" class="form-group">
                         <label>Name (required)</label>
                         <input type="text" class="form-control" id="name" placeholder="John Smith">
                         <span id="name-span" aria-hidden="true"></span>
                     </div>
-                    <div class="photo-group">
+
+                    <label>Upload Your Photo (required)</label>
+                    <div id="photo-group" class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                Browse… <input type="file" id="imgInp">
+                                Browse… <input id="photo" type="file"  name="uploads[]" class="form-control">
                             </span>
                         </span>
-                        <input type="text" class="form-control" readonly>
+                        <input id="photo-name" type="text" class="form-control" readonly>
+                        <span id="photo-span" aria-hidden="true"></span>
+
                     </div>
-                    <img id='img-upload' />
+                    <img id="img-upload" class="img-responsive" width="250" height="250" />
                 </form>
+
             </div>
-        </div>
 
-        <hr id="survery-hr">
 
-        <div class="row">
-            <div class="col-xs-12">
+            <hr id="survey-hr" class="col-xs-12 col-md-12 col-sm-12 hide-on-895">
+
+            <div class="col-xs-12 col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="panel-top">Personality Test</div>
                     <div class="panel-body">
@@ -117,7 +119,7 @@
                     </select>
                             </div>
                             <div class="form-group">
-                                <label>I've done extensive research on React Vs Angular</label>
+                                <label>I' ve done extensive research on React Vs Angular</label>
                                 <select class="form-control" id="question8">
                       <option>1 (strongly disagree)</option>
                       <option>2</option>
@@ -173,7 +175,9 @@
         </div>
 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="javascript/script.js"></script>
 </body>
 
 </html>
