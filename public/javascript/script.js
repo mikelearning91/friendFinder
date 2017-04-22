@@ -7,6 +7,7 @@ function checkForm() {
         $('#instructions').hide();
     } else {
         $("#submit-button").attr("disabled", true);
+        $("#submit-button").attr("title", "Please check if all fields are filled in");
     }
 }
 
@@ -35,8 +36,8 @@ $("#name").keyup(function() {
     checkForm();
 });
 
-
 $(document).ready(function() {
+    checkForm();
 
     $('#submit-button').on('click', function() {
 
@@ -116,7 +117,7 @@ $(document).ready(function() {
         }
         checkForm();
 
-        // upload file
+        // preparing/checking for file to make ajax post
         var files = $(this).get(0).files;
 
         if (files.length > 0) {
@@ -124,14 +125,15 @@ $(document).ready(function() {
             // AJAX request
             var formData = new FormData();
 
-            // loop through all the selected files and add them to the formData object
+            // loop through (all) the selected files and add them to the formData object
+            // future use: may want to upload multiple files (which can be set in file-routes.js, line 14)
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
                 // add the files to formData object for the data payload
                 formData.append('uploads[]', file, file.name);
             }
-
+            // ajax post for form data / file
             $.ajax({
                 url: '/uploads',
                 type: 'POST',
