@@ -32,7 +32,7 @@ htmlRoutes(app);
 
 // Serves favicon.ico
 // =============================================================
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // Starts the server to begin listening
 // =============================================================
