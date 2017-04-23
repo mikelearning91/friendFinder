@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var formidable = require('formidable');
 var fs = require('fs');
+var favicon = require('serve-favicon');
 var htmlRoutes = require('./routing/html-routes.js');
 var apiRoutes = require('./routing/api-routes.js');
 var fileRoutes = require('./routing/file-routes.js');
