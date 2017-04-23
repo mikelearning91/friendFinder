@@ -11,6 +11,14 @@ function checkForm() {
     }
 }
 
+function resetFormValidation(divID, spanID, divIDTwo, spanIDTwo) {
+    $(divID).removeClass("has-success has-feedback");
+    $(spanID).removeClass("glyphicon glyphicon-ok form-control-feedback");
+    $(divIDTwo).removeClass("has-success has-feedback");
+    $(spanIDTwo).removeClass("glyphicon glyphicon-ok form-control-feedback");
+    $("#img-upload").attr('src', '');
+}
+
 function hasSuccess(divID, spanID) {
     $(divID).removeClass("has-error has-feedback");
     $(divID).addClass("has-success has-feedback");
@@ -25,19 +33,21 @@ function hasError(divID, spanID) {
     $(spanID).addClass("glyphicon glyphicon-remove form-control-feedback");
 }
 
-$("#name").keyup(function() {
-    if ($(this).val() !== "") {
-        nameComplete = true;
-        hasSuccess("#name-group", "#name-span");
-    } else {
-        nameComplete = false;
-        hasError("#name-group", "#name-span");
-    }
-    checkForm();
-});
+
 
 $(document).ready(function() {
     checkForm();
+
+    $("#name").keyup(function() {
+        if ($(this).val() !== "") {
+            nameComplete = true;
+            hasSuccess("#name-group", "#name-span");
+        } else {
+            nameComplete = false;
+            hasError("#name-group", "#name-span");
+        }
+        checkForm();
+    });
 
     $('#submit-button').on('click', function() {
 
@@ -64,6 +74,11 @@ $(document).ready(function() {
             $('#match-name').text(response.name);
             $('#message').text('You should be friends with ' + response.name + '!');
             $('#modal').modal('show');
+
+            $('#buddy-form').each(function() {
+                this.reset();
+                resetFormValidation("#name-group", "#name-span", "#photo-group", "#photo-span");
+            });
         });
         return false;
     });
@@ -100,21 +115,41 @@ $(document).ready(function() {
         }
     }
 
+    var photoFile = $('#photo');
+    // validate if image exists in input field on click
+    // double validation - also validates on change, see line 141
+    $('.btn-file').on('click', function() {
+        $('#img-upload').each(function() {
+            if (photoFile.val() != '') {
+                photoComplete = true;
+                hasSuccess('#photo-group', '#photo-span');
+                $("#img-upload").show();
+
+            } else {
+                photoComplete = false;
+                hasError('#photo-group', '#photo-span');
+            }
+        });
+        checkForm();
+    });
+
     $('#photo').on('change', function() {
         // run readURL to preview file
         readURL(this);
 
-        // validate form for photo field
-        // NOTE::::: this is an odd work-around - wouldn't validate on :file input field's ".val()" for some reasion
-        // Find better way to validate
-        if ($("#img-upload").attr('src') !== " ") {
+        // validate if image exists in input field on change
+        if (photoFile.val() != '') {
             photoComplete = true;
-            hasSuccess('#photo-group', '#photo-span', '#photo', '#photo-name');
+            hasSuccess('#photo-group', '#photo-span');
             $("#img-upload").show();
+
         } else {
             photoComplete = false;
-            hasError('#photo-group', '#photo-span', '#photo', '#photo-name');
+            hasError('#photo-group', '#photo-span');
+            $("#img-upload").attr("src", "");
+            $("#img-upload").hide();
         }
+
         checkForm();
 
         // preparing/checking for file to make ajax post
