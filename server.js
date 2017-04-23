@@ -16,6 +16,12 @@ var fileRoutes = require('./routing/file-routes.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+// Serves favicon.ico
+// =============================================================
+app.use(favicon(__dirname + '/public/favicon.png'));
+
+// Serves static paths
+// =============================================================
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/uploads')));
 
@@ -30,9 +36,7 @@ fileRoutes(app);
 apiRoutes(app);
 htmlRoutes(app);
 
-// Serves favicon.ico
-// =============================================================
-app.use(favicon(__dirname + '/public/favicon.png'));
+
 
 // Starts the server to begin listening
 // =============================================================
