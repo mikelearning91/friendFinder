@@ -18,7 +18,7 @@ var PORT = process.env.PORT || 3000;
 
 // Serves favicon.ico
 // =============================================================
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // Serves static paths
 // =============================================================
