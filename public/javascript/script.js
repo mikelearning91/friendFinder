@@ -1,5 +1,6 @@
 var nameComplete = false;
 var photoComplete = false;
+var photoFile = $('#photo');
 
 function checkForm() {
     if (nameComplete && photoComplete) {
@@ -36,18 +37,6 @@ function hasError(divID, spanID) {
 
 
 $(document).ready(function() {
-    checkForm();
-
-    $("#name").keyup(function() {
-        if ($(this).val() !== "") {
-            nameComplete = true;
-            hasSuccess("#name-group", "#name-span");
-        } else {
-            nameComplete = false;
-            hasError("#name-group", "#name-span");
-        }
-        checkForm();
-    });
 
     $('#submit-button').on('click', function() {
 
@@ -115,9 +104,20 @@ $(document).ready(function() {
         }
     }
 
-    var photoFile = $('#photo');
-    // validate if image exists in input field on click
-    // double validation - also validates on change, see line 141
+    // validate name field
+    $("#name").keyup(function() {
+        if ($(this).val() !== "") {
+            nameComplete = true;
+            hasSuccess("#name-group", "#name-span");
+        } else {
+            nameComplete = false;
+            hasError("#name-group", "#name-span");
+        }
+        checkForm();
+    });
+
+    // validates on click if image exists in input field
+    // also validates on 'change', see line 141
     $('.btn-file').on('click', function() {
         $('#img-upload').each(function() {
             if (photoFile.val() != '') {

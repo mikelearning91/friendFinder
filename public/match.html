@@ -21,7 +21,7 @@
                 <form id="buddy-form">
                     <div id="name-group" class="form-group">
                         <label>Name (required)</label>
-                        <input type="text" class="form-control" id="name" placeholder="John Smith">
+                        <input name="name" type="text" class="form-control" id="name" placeholder="John Smith">
                         <span id="name-span" aria-hidden="true"></span>
                     </div>
 
@@ -29,7 +29,7 @@
                     <div id="photo-group" class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                Browse… <input id="photo" type="file"  name="uploads[]" class="form-control" accept="image/*">
+                                Browse… <input name="photo" id="photo" type="file"  name="uploads[]" class="form-control" accept="image/*">
                             </span>
                         </span>
                         <input id="photo-name" type="text" class="form-control form-control-feedback" readonly>
