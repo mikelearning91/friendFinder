@@ -58,11 +58,19 @@ $(document).ready(function() {
             //change link to Heroku link
 
             //modal pop up
-            $('#match-image').attr('src', "/uploads/" + response.photo_name);
-            console.log(response.photo_name);
-            $('#match-name').text(response.name);
-            $('#message').text('You should be friends with ' + response.name + '!');
-            $('#modal').modal('show');
+            if (response.name === undefined) {
+                $(".modal-title").html("Yikes! We got buddy troubles.");
+                $('#match-name').text('Sorry ' + newFriend.name + "! This silly app is so unpopular at this point, we don't have enough buddies to find everybody matches. This is our fault, not yours! We Love You " + newFriend.name + "!");
+                $('#match-image').attr('src', "/uploads/heart.png");
+                $('#modal').modal('show');
+            } else {
+                $(".modal-title").html("You have a match!");
+                $('#match-image').attr('src', "/uploads/" + response.photo_name);
+                console.log(response.photo_name);
+                $('#match-name').text(response.name);
+                $('#message').text('You should be friends with ' + response.name + '!');
+                $('#modal').modal('show');
+            }
 
             $('#buddy-form').each(function() {
                 this.reset();
@@ -71,10 +79,47 @@ $(document).ready(function() {
         });
         return false;
     });
+
+    // preparing/checking for file to make ajax post
+    var files = $("#photo").get(0).files;
+
+    if (files.length > 0) {
+        // create a FormData object which will be sent as the data payload in the
+        // AJAX request
+        var formData = new FormData();
+
+        // loop through (all) the selected files and add them to the formData object
+        // future use: may want to upload multiple files (which can be set in file-routes.js, line 14)
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            // add the files to formData object for the data payload
+            formData.append('uploads[]', file, file.name);
+        }
+        // ajax post for photo file
+        $.ajax({
+            url: '/uploads',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log('upload successful!\r\n' + data);
+            },
+            xhr: function() {
+                // create an XMLHttpRequest
+                var xhr = new XMLHttpRequest();
+                return xhr;
+            }
+        });
+
+    }
 });
 
-// Image Preview before form submit
+
 $(document).ready(function() {
+
+    // Image Preview before form submit
     $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -151,40 +196,5 @@ $(document).ready(function() {
         }
 
         checkForm();
-
-        // preparing/checking for file to make ajax post
-        var files = $(this).get(0).files;
-
-        if (files.length > 0) {
-            // create a FormData object which will be sent as the data payload in the
-            // AJAX request
-            var formData = new FormData();
-
-            // loop through (all) the selected files and add them to the formData object
-            // future use: may want to upload multiple files (which can be set in file-routes.js, line 14)
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-
-                // add the files to formData object for the data payload
-                formData.append('uploads[]', file, file.name);
-            }
-            // ajax post for form data / file
-            $.ajax({
-                url: '/uploads',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    console.log('upload successful!\n' + data);
-                },
-                xhr: function() {
-                    // create an XMLHttpRequest
-                    var xhr = new XMLHttpRequest();
-                    return xhr;
-                }
-            });
-
-        }
     });
 });

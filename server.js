@@ -16,7 +16,7 @@ var fileRoutes = require('./routing/file-routes.js');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-// Serves favicon.ico
+// Serves favicon
 // =============================================================
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
@@ -35,8 +35,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 fileRoutes(app);
 apiRoutes(app);
 htmlRoutes(app);
-
-
 
 // Starts the server to begin listening
 // =============================================================
