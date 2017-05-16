@@ -16,3 +16,5 @@ would be easier to store continuous data. In the case the temporary server this 
 
 - // phpMyAdmin
 - // Follow this link http://www.phpmyadmin.co and use the database details above to view/edit database.
+
+- REMEMBER: public/javascript/script.js - change line 95 to relevant URL
