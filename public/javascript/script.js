@@ -35,8 +35,6 @@ function hasError(divID, spanID) {
     $(spanID).addClass("glyphicon glyphicon-remove form-control-feedback");
 }
 
-
-
 $(document).ready(function() {
 
     $('#submit-button').on('click', function() {
