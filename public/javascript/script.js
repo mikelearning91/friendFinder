@@ -92,7 +92,7 @@ $(document).ready(function() {
         };
 
         //change "http://localhost:8080" to Heroku link, or to wherever you're going to deploy
-        $.post('http://localhost:8080/api/friends', newFriend).then(function(response) {
+        $.post('https://fierce-headland-26934.herokuapp.com/api/friends', newFriend).then(function(response) {
 
 
             //modal pop up
