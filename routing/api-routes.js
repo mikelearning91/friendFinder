@@ -5,9 +5,9 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: "sql9.freemysqlhosting.net",
     port: 3306,
-    user: "sql9169750",
-    password: "gjbefbmWpl",
-    database: "sql9169750"
+    user: "sql9174783",
+    password: "liA1ZtmQl9",
+    database: "sql9174783"
 });
 
 module.exports = function(app) {

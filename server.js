@@ -14,7 +14,7 @@ var fileRoutes = require('./routing/file-routes.js');
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 // Serves favicon
 // =============================================================
@@ -23,7 +23,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 // Serves static paths
 // =============================================================
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, 'public/uploads')));
 
 // Sets up the Express app to handle data parsing
 // =============================================================

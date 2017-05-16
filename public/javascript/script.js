@@ -39,6 +39,43 @@ function hasError(divID, spanID) {
 $(document).ready(function() {
 
     $('#submit-button').on('click', function() {
+        // =================
+        // FIRST: upload photo file
+        // =================
+        var files = $("#photo").get(0).files;
+
+        // preparing/checking for file to make ajax post
+        if (files.length > 0) {
+            // create a FormData object which will be sent as the data payload in the
+            // AJAX request
+            var formData = new FormData();
+
+            // loop through (all) the selected files and add them to the formData object
+            // future use: may want to upload multiple files (which can be set in file-routes.js, line 14)
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                // add the files to formData object for the data payload
+                formData.append('uploads[]', file, file.name);
+            }
+            // ajax post for photo file
+            $.ajax({
+                url: '/uploads',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    console.log('upload successful!\r\n' + data);
+                },
+                xhr: function() {
+                    // create an XMLHttpRequest
+                    var xhr = new XMLHttpRequest();
+                    return xhr;
+                }
+            });
+
+        }
 
         var newFriend = {
             name: $('#name').val().trim(),
@@ -54,7 +91,7 @@ $(document).ready(function() {
             question9: parseInt($('#question9').val().replace(/[^0-9 | ^.]/g, '')),
             question10: parseInt($('#question10').val().replace(/[^0-9 | ^.]/g, ''))
         };
-        $.post('http://localhost:3000/api/friends', newFriend).then(function(response) {
+        $.post('http://localhost:8080/api/friends', newFriend).then(function(response) {
             //change link to Heroku link
 
             //modal pop up
@@ -79,41 +116,6 @@ $(document).ready(function() {
         });
         return false;
     });
-
-    // preparing/checking for file to make ajax post
-    var files = $("#photo").get(0).files;
-
-    if (files.length > 0) {
-        // create a FormData object which will be sent as the data payload in the
-        // AJAX request
-        var formData = new FormData();
-
-        // loop through (all) the selected files and add them to the formData object
-        // future use: may want to upload multiple files (which can be set in file-routes.js, line 14)
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-
-            // add the files to formData object for the data payload
-            formData.append('uploads[]', file, file.name);
-        }
-        // ajax post for photo file
-        $.ajax({
-            url: '/uploads',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                console.log('upload successful!\r\n' + data);
-            },
-            xhr: function() {
-                // create an XMLHttpRequest
-                var xhr = new XMLHttpRequest();
-                return xhr;
-            }
-        });
-
-    }
 });
 
 
