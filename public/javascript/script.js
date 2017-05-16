@@ -2,6 +2,7 @@ var nameComplete = false;
 var photoComplete = false;
 var photoFile = $('#photo');
 
+// custom form validation
 function checkForm() {
     if (nameComplete && photoComplete) {
         $("#submit-button").removeAttr("disabled");
@@ -92,8 +93,9 @@ $(document).ready(function() {
             question10: parseInt($('#question10').val().replace(/[^0-9 | ^.]/g, ''))
         };
 
-        $.post('https://fierce-headland-26934.herokuapp.com/api/friends', newFriend).then(function(response) {
-            //change link to Heroku link
+        //change "http://localhost:8080" to Heroku link, or to wherever you're going to deploy
+        $.post('http://localhost:8080/api/friends', newFriend).then(function(response) {
+
 
             //modal pop up
             if (response.name === undefined) {
